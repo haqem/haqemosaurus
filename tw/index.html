@@ -1098,5 +1098,26 @@
 <script>if (window.innerWidth < 768) { }</script>
 <script>$('[data-link-url]').on('click', event => { let base_url = $('[name="url"]').val(); let url = $(event.currentTarget).data('link-url'); $.ajax(`${base_url}${url}?no_redirect`); });</script>
 <script>$(".subscribe-btn").click(function () { var subscription_email = $(this).parent().find('input[name="email"]').val(); var widget = $(this).parent().find('input[name="widget"]').val(); $.ajax({ url: "link-ajax", type: "POST", data: { token: '8e6fc8c69ba8afa1d385a345378def6c', request_type: 'subscribe', subscription_email: subscription_email, widget: widget }, success: function (data) { GrowlNotification.notify({ description: "Subscribed Successfully!", type: "success", position: "top-right", closeTimeout: 5000 }); } }); }); $('form[id^="mail_"]').each((index, element) => { let link_id = $(element).find('input[name="link_id"]').val(); let is_converted = localStorage.getItem(`mail_${link_id}`); if (is_converted) { $(element).find('button[type="submit"]').attr('disabled', 'disabled'); } }); $('form[id^="mail_"]').on('submit', event => { let base_url = $('[name="url"]').val(); let link_id = $(event.currentTarget).find('input[name="link_id"]').val(); let is_converted = localStorage.getItem(`mail_${link_id}`); if (!is_converted) { $.ajax({ type: 'POST', url: `${base_url}link-ajax`, data: $(event.currentTarget).serialize(), success: (data) => { let notification_container = $(event.currentTarget).find('.notification-container'); if (data.status == 'error') { notification_container.html(''); display_notifications(data.message, 'error', notification_container); } else if (data.status == 'success') { display_notifications(data.message, 'success', notification_container); setTimeout(() => { $(event.currentTarget).closest('.modal').modal('hide'); notification_container.html(''); localStorage.setItem(`mail_${link_id}`, true); $(event.currentTarget).find('button[type="submit"]').attr('disabled', 'disabled'); }, 1000); } }, dataType: 'json' }); } event.preventDefault(); }); document.addEventListener("DOMContentLoaded", function () { var lazyloadImages = document.querySelectorAll(".lazy"); var lazyloadThrottleTimeout; function lazyload() { if (lazyloadThrottleTimeout) { clearTimeout(lazyloadThrottleTimeout); } lazyloadThrottleTimeout = setTimeout(function () { var scrollTop = window.pageYOffset; lazyloadImages.forEach(function (img) { if (img.offsetTop < (window.innerHeight + scrollTop)) { img.style.backgroundImage = `url('${img.dataset.src}')`; img.classList.remove('lazy'); } }); if (lazyloadImages.length == 0) { document.removeEventListener("scroll", lazyload); window.removeEventListener("resize", lazyload); window.removeEventListener("orientationChange", lazyload); } }, 20); } document.addEventListener("scroll", lazyload); window.addEventListener("resize", lazyload); window.addEventListener("orientationChange", lazyload); setTimeout(() => { lazyload(); }, 1000); });</script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-2T6N9KVVTY');
+</script>
+<script type="text/javascript">
+var sc_project=12721955; 
+var sc_invisible=1; 
+var sc_security="53c7f1c8"; 
+</script>
+<script type="text/javascript"
+src="https://www.statcounter.com/counter/counter.js"
+async></script>
+<noscript><div class="statcounter"><a title="Web Analytics
+Made Easy - Statcounter" href="https://statcounter.com/"
+target="_blank"><img class="statcounter"
+src="https://c.statcounter.com/12721955/0/53c7f1c8/1/"
+alt="Web Analytics Made Easy - Statcounter"
+referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
 
 </html>
