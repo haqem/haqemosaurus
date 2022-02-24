@@ -33,16 +33,6 @@
         href="https://cdn.jsdelivr.net/gh/haqem/haqemdotcom@1.4.4/bio-link/springleaf/assets/css/animate.min.css?v=2&init=1631863858"
         rel="stylesheet" media="screen">
     <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-89255113-3"></script>
-    <script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'UA-89255113-3');</script>
-    <script
-        type="text/javascript">var sc_project = 12490211; var sc_invisible = 1; var sc_security = "b706eb3a";</script>
-    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
-    <noscript>
-        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
-                    class="statcounter" src="https://c.statcounter.com/12490211/0/b706eb3a/1/" alt="Web Analytics"
-                    referrerPolicy="no-referrer-when-downgrade"></a></div>
-    </noscript>
     <link rel="canonical" href="https://haqemosaur.us/tw" />
     <style>
         body * {
@@ -509,7 +499,7 @@
                                 </svg>
                             </a>
                         </span>
-                        <span> <a class="social-links-div" href="https://open.spotify.com/user/iamhaqem"
+                        <!-- <span> <a class="social-links-div" href="https://open.spotify.com/user/iamhaqem"
                                 target="_blank"> <i data-toggle="tooltip" title="Spotify"
                                     class="fab fa-spotify fa-fw fa-2x"> </i> </a> </span>
                         <span>
@@ -539,7 +529,7 @@
                         </span>
                         <span> <a class="social-links-div" href="https://behance.net/haqem" target="_blank"> <i
                                     data-toggle="tooltip" title="Behance" class="fab fa-behance fa-fw fa-2x"> </i> </a>
-                        </span>
+                        </span> -->
 
                         <span>
                             <svg width="15px" height="24px" viewBox="0 0 20 24" version="1.1"
@@ -1066,7 +1056,7 @@
 
                 </main>
 
-                <footer>
+                <footer style="margin-bottom:30px;">
                     <a href="https://haqem.com/?ref=haqemosaur.us/twitter">
                         <img src="https://i.postimg.cc/cv0RfkVR/haqemosaurus-tw.png" class="img-fluid navbar-logo"
                             alt="Haqem Network" />
@@ -1098,7 +1088,7 @@
 <script>if (window.innerWidth < 768) { }</script>
 <script>$('[data-link-url]').on('click', event => { let base_url = $('[name="url"]').val(); let url = $(event.currentTarget).data('link-url'); $.ajax(`${base_url}${url}?no_redirect`); });</script>
 <script>$(".subscribe-btn").click(function () { var subscription_email = $(this).parent().find('input[name="email"]').val(); var widget = $(this).parent().find('input[name="widget"]').val(); $.ajax({ url: "link-ajax", type: "POST", data: { token: '8e6fc8c69ba8afa1d385a345378def6c', request_type: 'subscribe', subscription_email: subscription_email, widget: widget }, success: function (data) { GrowlNotification.notify({ description: "Subscribed Successfully!", type: "success", position: "top-right", closeTimeout: 5000 }); } }); }); $('form[id^="mail_"]').each((index, element) => { let link_id = $(element).find('input[name="link_id"]').val(); let is_converted = localStorage.getItem(`mail_${link_id}`); if (is_converted) { $(element).find('button[type="submit"]').attr('disabled', 'disabled'); } }); $('form[id^="mail_"]').on('submit', event => { let base_url = $('[name="url"]').val(); let link_id = $(event.currentTarget).find('input[name="link_id"]').val(); let is_converted = localStorage.getItem(`mail_${link_id}`); if (!is_converted) { $.ajax({ type: 'POST', url: `${base_url}link-ajax`, data: $(event.currentTarget).serialize(), success: (data) => { let notification_container = $(event.currentTarget).find('.notification-container'); if (data.status == 'error') { notification_container.html(''); display_notifications(data.message, 'error', notification_container); } else if (data.status == 'success') { display_notifications(data.message, 'success', notification_container); setTimeout(() => { $(event.currentTarget).closest('.modal').modal('hide'); notification_container.html(''); localStorage.setItem(`mail_${link_id}`, true); $(event.currentTarget).find('button[type="submit"]').attr('disabled', 'disabled'); }, 1000); } }, dataType: 'json' }); } event.preventDefault(); }); document.addEventListener("DOMContentLoaded", function () { var lazyloadImages = document.querySelectorAll(".lazy"); var lazyloadThrottleTimeout; function lazyload() { if (lazyloadThrottleTimeout) { clearTimeout(lazyloadThrottleTimeout); } lazyloadThrottleTimeout = setTimeout(function () { var scrollTop = window.pageYOffset; lazyloadImages.forEach(function (img) { if (img.offsetTop < (window.innerHeight + scrollTop)) { img.style.backgroundImage = `url('${img.dataset.src}')`; img.classList.remove('lazy'); } }); if (lazyloadImages.length == 0) { document.removeEventListener("scroll", lazyload); window.removeEventListener("resize", lazyload); window.removeEventListener("orientationChange", lazyload); } }, 20); } document.addEventListener("scroll", lazyload); window.addEventListener("resize", lazyload); window.addEventListener("orientationChange", lazyload); setTimeout(() => { lazyload(); }, 1000); });</script>
-<script src=".../saurus.js"></script>
+<script src="https://haqemosaur.us/saurus.js"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-2T6N9KVVTY"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
