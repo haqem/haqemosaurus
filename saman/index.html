@@ -1,0 +1,82 @@
+<html>
+<head></head>
+<title></title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<script>
+function copy_text(node){
+    if(document.body.createTextRange){
+        const range = document.body.createTextRange();
+        range.moveToElementText(node);
+        range.select();
+        document.execCommand('copy');
+    }
+    else if(window.getSelection){
+        const selection = window.getSelection();
+        const range = document.createRange();
+        range.selectNodeContents(node);
+        selection.removeAllRanges();
+        selection.addRange(range);
+        document.execCommand('copy');
+    }
+    else {
+        console.warn("Could not select text in node");
+    }
+}
+// This copy_text function ensures cross-browser compatibility
+// What it does is select the text within the range of the node holding the text
+// Then executes the "copy" command on that selected text
+
+function clear_selection(){
+    if(window.getSelection){
+        window.getSelection().removeAllRanges();
+    }
+    else if(document.selection){
+        document.selection.empty();
+    }
+}
+// This clear_selection function clears any selection from the document
+
+document.addEventListener("DOMContentLoaded", function(){
+    document.getElementById("clipboard-exec").onclick = function(){
+        copy_text(document.getElementById("clipboard-text"));
+        // Copy the text on clicking the button
+        setTimeout(() => { clear_selection() }, 500);
+        // Clear the selection after 0.5s
+    }
+});
+</script>
+<body>
+
+  TARIKH :<input type="date" id="tarikh"></br>
+NAMA : <input type="text" id="nama"></br>
+JENIS SAMAN :<input type="text" id="jenis_saman"></br>
+HARGA SAMAN :<input type="text" id="harga_saman">
+
+<h3 class="display" id="clipboard-text"></h3>
+<button><span id="clipboard-exec"><i class="fa fa-copy"> Copy</i></span></button>
+
+
+</body>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+   $("#nama, #jenis_saman, #harga_saman, #tarikh").on('keyup keydown',function(){
+      $(".display").text("");
+
+      var nama = $("#nama").val();
+      var jenis_saman = $("#jenis_saman").val();
+      var harga_saman = $("#harga_saman").val();
+      var tarikh = $("#tarikh").val();
+      
+      var saman_penuh = "```"+"Nama Pesalah: "+ nama +"</br>Jenis Saman: "+jenis_saman+ "</br>Harga Saman: "+harga_saman+ "</br>Tarikh: "+tarikh+"```";
+      
+      //alert(fullname);
+      $(".display").append(saman_penuh);
+   });
+});
+
+</script>
+
+</html>
