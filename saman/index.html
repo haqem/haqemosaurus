@@ -1,6 +1,7 @@
+<!DOCTYPE html>
 <html>
-<head></head>
-<title></title>
+<head>
+<title>Page Title</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
 <script>
@@ -46,18 +47,134 @@ document.addEventListener("DOMContentLoaded", function(){
     }
 });
 </script>
+<style>
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Montserrat";
+}
+section {
+  height: 100vh;
+  width: 100%;
+  background-color: aliceblue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.container {
+  width: 90%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  box-shadow: 0px 0px 20px #00000010;
+  background-color: white;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+.form-group {
+  width: 100%;
+  margin-top: 20px;
+  font-size: 20px;
+}
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 5px;
+  font-size: 18px;
+  border: 1px solid rgba(128, 128, 128, 0.199);
+  margin-top: 5px;
+}
+
+textarea {
+  resize: vertical;
+}
+button {
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 20px;
+  font-size: 24px;
+  border-radius: 8px;
+  font-family: "Montserrat";
+  color: rgb(27, 166, 247);
+  text-align: center;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.3s ease background-color;
+}
+button:hover {
+  background-color: rgb(214, 226, 236);
+}
+#status {
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+  padding: 10px;
+  margin: 0 auto;
+  border-radius: 8px;
+}
+#status.success {
+  background-color: rgb(211, 250, 153);
+  animation: status 4s ease forwards;
+}
+#status.error {
+  background-color: rgb(250, 129, 92);
+  color: white;
+  animation: status 4s ease forwards;
+}
+@keyframes status {
+  0% {
+    opacity: 1;
+    pointer-events: all;
+  }
+  90% {
+    opacity: 1;
+    pointer-events: all;
+  }
+  100% {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+</style>
+</head>
 <body>
 
-  TARIKH :<input type="date" id="tarikh"></br>
-NAMA : <input type="text" id="nama"></br>
-JENIS SAMAN :<input type="text" id="jenis_saman"></br>
-HARGA SAMAN :<input type="text" id="harga_saman">
+<section>
+  <div class="container">
 
-<h3 class="display" id="clipboard-text"></h3>
-<button><span id="clipboard-exec"><i class="fa fa-copy"> Copy</i></span></button>
+      <div class="form-group">
+        <label for="tarikh"> Tarikh:</label>
+        <input type="date" id="tarikh" name="tarikh">
+      </div>
+
+      <div class="form-group">
+        <label for="nama">Nama Pesalah:</label>
+        <input type="text" id="nama" name="nama">
+      </div>
+
+      <div class="form-group">
+        <label for="jenis_saman">Jenis Saman</label>
+        <input type="text" id="jenis_saman" name="jenis_saman">
+      </div>
+      
+      <div class="form-group">
+        <label for="harga_saman">Harga Saman</label>
+        <input type="text" id="harga_saman" name="harga_saman">
+      </div></br>
 
 
-</body>
+<p class="display" id="clipboard-text"></p>
+<button><span id="clipboard-exec">Copy Saman</span></button>
+
+  </div>
+  <div id="status"></div>
+</section>
 
 <script type="text/javascript">
 
@@ -78,5 +195,5 @@ $(document).ready(function(){
 });
 
 </script>
-
+</body>
 </html>
